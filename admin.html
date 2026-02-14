@@ -133,8 +133,33 @@
 
 </div>
 
-<script src="js/script.js"></script>
+<!-- ============= EDIT ORDER MODAL ============= -->
+<div id="orderModal" class="modal">
+  <div class="modal-box">
+
+    <h3>Edit Transaksi</h3>
+
+    <input type="text" id="modalNama" placeholder="Nama">
+
+    <input type="number" id="modalUsd" placeholder="USD">
+
+    <select id="modalType">
+      <option value="convert">Convert</option>
+      <option value="topup">Top Up</option>
+    </select>
+
+    <div class="modal-actions">
+      <button id="saveOrderBtn" class="btn-admin">Simpan</button>
+      <button id="cancelOrderBtn" class="btn-admin btn-logout">Batal</button>
+    </div>
+
+  </div>
+</div>
+
+<div id="orderToastContainer" class="toast-container"></div>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/script.js"></script>
 <script src="js/admin.js"></script>
 </body>
 </html>
