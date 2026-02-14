@@ -1,0 +1,281 @@
+/* =========================
+   ADMIN STYLE PRO ✨
+========================= */
+
+.admin-section{
+  padding: 32px 16px 100px;
+  max-width: 860px;
+  margin:auto;
+}
+
+/* title */
+.admin-section h2{
+  text-align:center;
+  font-size:24px;
+  font-weight:700;
+  margin-bottom:22px;
+}
+
+
+/* ================= CARD ================= */
+
+.admin-card{
+  background: var(--glass);
+  backdrop-filter: blur(18px);
+  border-radius:18px;
+  padding:18px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 8px 30px rgba(0,0,0,.25);
+}
+
+
+/* ================= HEADER ================= */
+
+.admin-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+  gap:10px;
+}
+
+.admin-header h3{
+  font-size:16px;
+  font-weight:600;
+}
+
+.badge{
+  background:#f59e0b;
+  color:white;
+  font-size:11px;
+  padding:4px 8px;
+  border-radius:999px;
+}
+
+
+/* ================= LIST ================= */
+
+.admin-list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+
+/* ================= ITEM ================= */
+
+.admin-item{
+  background:rgba(255,255,255,.05);
+  border-radius:14px;
+  padding:14px;
+  border:1px solid rgba(255,255,255,.06);
+  transition:.2s;
+}
+
+.admin-item:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(0,0,0,.25);
+}
+
+/* pending highlight */
+.admin-item.pending{
+  border-left:4px solid #f59e0b;
+}
+
+/* replied highlight */
+.admin-item:not(.pending){
+  border-left:4px solid #22c55e;
+}
+
+
+/* name */
+.admin-name{
+  font-weight:600;
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+/* message */
+.admin-text{
+  font-size:14px;
+  opacity:.9;
+  margin-bottom:8px;
+}
+
+
+/* ================= REPLY BUBBLE ================= */
+
+.admin-replied{
+  background:rgba(34,197,94,.12);
+  color:#22c55e;
+  font-size:13px;
+  padding:8px 10px;
+  border-radius:10px;
+  margin-bottom:8px;
+}
+
+
+/* ================= INPUT ================= */
+
+.admin-reply{
+  display:flex;
+  gap:8px;
+  margin-top:6px;
+}
+
+.admin-reply input{
+  flex:1;
+  padding:9px 10px;
+  border-radius:10px;
+  border:none;
+  outline:none;
+  background:rgba(255,255,255,.08);
+  color:white;
+}
+
+
+/* ================= BUTTONS ================= */
+
+.btn-admin{
+  background:var(--primary);
+  border:none;
+  color:white;
+  padding:8px 12px;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:600;
+}
+
+.btn-admin:hover{
+  opacity:.9;
+}
+
+.btn-delete{
+  background:#ef4444;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:480px){
+
+  .admin-reply{
+    flex-direction:column;
+  }
+
+  .btn-admin{
+    width:100%;
+  }
+
+}
+
+/* =========================
+   PIN LOCK
+========================= */
+.pin-lock{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(8px);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.pin-box{
+  background:#111;
+  padding:28px;
+  border-radius:16px;
+  width:260px;
+  text-align:center;
+  box-shadow:0 10px 40px rgba(0,0,0,.6);
+}
+
+.pin-box h3{
+  margin-bottom:6px;
+}
+
+.pin-box p{
+  font-size:13px;
+  opacity:.6;
+  margin-bottom:14px;
+}
+
+#pinInput{
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  text-align:center;
+  font-size:18px;
+  letter-spacing:4px;
+  margin-bottom:10px;
+}
+
+#pinBtn{
+  width:100%;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  background:var(--primary);
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+}
+
+#pinError{
+  color:#ef4444;
+  font-size:12px;
+  display:block;
+  margin-top:6px;
+}
+
+.shake{
+  animation:shake .3s;
+}
+
+@keyframes shake{
+  25%{transform:translateX(-6px)}
+  50%{transform:translateX(6px)}
+  75%{transform:translateX(-6px)}
+}
+
+.btn-logout{
+  background:#334155;
+}
+
+/* ================= ORDERS TABLE ================= */
+.orders-table-wrap{
+  overflow-x:auto;
+}
+
+.orders-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+}
+
+.orders-table th,
+.orders-table td{
+  padding:10px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.orders-table td:nth-child(3){
+  text-align:right;
+  font-weight:600;
+}
+
+.action-btn{
+  padding:5px 8px;
+  border:none;
+  border-radius:8px;
+  font-size:11px;
+  cursor:pointer;
+  margin-right:4px;
+}
+
+.btn-edit{ background:#f59e0b; color:white; }
+.btn-del{ background:#ef4444; color:white; }

@@ -1,0 +1,128 @@
+/* HERO khusus */
+.history-hero{
+  padding: 90px 20px 40px;
+}
+
+/* filter */
+.filter-box{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.filter-box input,
+.filter-box select{
+  flex:1;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.1);
+  background:var(--glass);
+  color:var(--text);
+}
+
+
+/* table */
+.table-wrapper{
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+}
+
+/* biar nama panjang nggak pecah layout */
+td{
+  white-space: nowrap;
+}
+
+/* USD rata kanan biar rapi */
+td:nth-child(3){
+  text-align:right;
+  font-weight:600;
+}
+
+th, td{
+  padding:12px 10px;
+  text-align:left;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+th{
+  font-weight:600;
+  opacity:.8;
+}
+
+tbody tr:hover{
+  background:rgba(255,255,255,.05);
+}
+
+/* badge */
+.badge{
+  padding:4px 10px;
+  border-radius:8px;
+  font-size:11px;
+  font-weight:600;
+}
+
+.badge.convert{
+  background:#22c55e33;
+  color:#22c55e;
+}
+
+.badge.topup{
+  background:#3b82f633;
+  color:#3b82f6;
+}
+
+/* state */
+#loading,
+.empty{
+  text-align:center;
+  padding:25px;
+  opacity:.7;
+}
+
+.empty{
+  display:none;
+}
+
+/* =========================
+   PAGINATION
+========================= */
+
+.pagination{
+  display:flex;
+  gap:6px;
+  justify-content:center;
+  margin-top:18px;
+  flex-wrap:wrap;
+}
+
+.page-btn{
+  padding:6px 10px;
+  border-radius:8px;
+  font-size:12px;
+  cursor:pointer;
+  background:var(--glass);
+  border:1px solid rgba(255,255,255,.1);
+  color:var(--text);
+  transition:.2s;
+}
+
+.page-btn:hover{
+  transform:translateY(-1px);
+}
+
+.page-btn.active{
+  background:var(--primary);
+  border-color:var(--primary);
+  color:white;
+  font-weight:600;
+}
+
+.page-dots{
+  padding:6px 4px;
+  opacity:.5;
+}
