@@ -162,6 +162,14 @@ logoutBtn?.addEventListener("click", ()=>{
 ========================= */
 const ordersBody = document.getElementById("ordersBody");
 const refreshOrders = document.getElementById("refreshOrders");
+const modal       = document.getElementById("orderModal");
+const modalNama   = document.getElementById("modalNama");
+const modalUsd    = document.getElementById("modalUsd");
+const modalType   = document.getElementById("modalType");
+const saveBtn     = document.getElementById("saveOrderBtn");
+const cancelBtn   = document.getElementById("cancelOrderBtn");
+
+let editingId = null;
 
 let ordersData = [];
 
@@ -211,31 +219,51 @@ async function loadOrders(){
 }
 
 /* ================= EDIT ================= */
-window.editOrder = async function(id){
+window.editOrder = function(id){
 
   const item = ordersData.find(x=>x.id===id);
   if(!item) return;
 
-  const nama = prompt("Nama:", item.nama);
-  if(nama===null) return;
+  editingId = id;
 
-  const usd = prompt("USD:", item.usd);
-  if(usd===null) return;
+  modalNama.value = item.nama || "";
+  modalUsd.value  = item.usd || "";
+  modalType.value = item.type || "convert";
 
-  const type = prompt("Type (convert/topup):", item.type);
-  if(type===null) return;
+  modal.classList.add("show");
+};
+
+saveBtn?.addEventListener("click", async ()=>{
+
+  if(!editingId) return;
 
   await db
     .from("orders")
     .update({
-      nama,
-      usd:Number(usd),
-      type
+      nama: modalNama.value,
+      usd: Number(modalUsd.value),
+      type: modalType.value
     })
-    .eq("id",id);
+    .eq("id", editingId);
+
+  modal.classList.remove("show");
+  editingId = null;
 
   loadOrders();
-};
+});
+
+cancelBtn?.addEventListener("click", ()=>{
+  modal.classList.remove("show");
+  editingId = null;
+});
+
+/* klik luar modal = close */
+modal?.addEventListener("click", e=>{
+  if(e.target === modal){
+    modal.classList.remove("show");
+    editingId = null;
+  }
+});
 
 /* ================= DELETE ================= */
 window.deleteOrder = async function(id){

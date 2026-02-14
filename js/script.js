@@ -2,7 +2,6 @@
    XKAY STORE — CLEAN & FIXED FULL SCRIPT
    (tanpa ubah fitur, cuma dirapihin & dibenerin)
 ================================================= */
-
 const body      = document.body;
 const nav       = document.querySelector("nav");
 const menu      = document.getElementById("menu");
@@ -150,3 +149,69 @@ function updateOnlineStatus(){
 
 updateOnlineStatus();
 setInterval(updateOnlineStatus, 60000);
+
+/* =========================
+   GLOBAL ORDERS FLOATING
+========================= */
+const toastContainer = document.getElementById("orderToastContainer");
+
+if(toastContainer){
+
+  const supabase = window.supabase.createClient(
+    "https://xhsrxxguyylfikbchzke.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhoc3J4eGd1eXlsZmlrYmNoemtlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1OTkwMTgsImV4cCI6MjA4NjE3NTAxOH0.PWCpgiJxsvShgRPK9lVCF3t2GMv9kGEgcC6abz4sYXk"
+  );
+
+  let ordersData = [];
+  let currentIndex = 0;
+
+  function showToast(item){
+
+    const div = document.createElement("div");
+    div.className = "toast";
+
+    const usdFormatted = Number(item.usd).toLocaleString("en-US");
+
+    div.innerHTML =
+      `💸 ${item.nama} berhasil ${item.type} <b>$${usdFormatted}</b>`;
+
+    toastContainer.appendChild(div);
+
+    setTimeout(()=>{
+      div.classList.add("fade");
+      setTimeout(()=>div.remove(),400);
+    },4000);
+  }
+
+  async function loadOrders(){
+
+    const { data, error } = await supabase
+      .from("orders")
+      .select("nama,type,usd")
+      .order("usd",{ ascending:false });
+
+    if(error || !data?.length) return;
+
+    ordersData = data;
+    startLoop();
+  }
+
+  function startLoop(){
+
+    setInterval(()=>{
+
+      if(!ordersData.length) return;
+
+      showToast(ordersData[currentIndex]);
+
+      currentIndex++;
+
+      if(currentIndex >= ordersData.length){
+        currentIndex = 0;
+      }
+
+    },5000); // tiap 5 detik muncul baru
+  }
+
+  loadOrders();
+}
