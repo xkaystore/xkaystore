@@ -446,10 +446,3 @@
     @keyframes fadeOut{
       to{ opacity:0; transform:translateX(-40px); }
     }
-    
-    @media (max-width:480px){
-      .toast-container{
-        left:12px;
-        bottom:90px; /* biar gak tabrakan WA */
-      }
-    }
