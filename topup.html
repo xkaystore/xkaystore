@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Xkay Store | Convert & Top Up PayPal</title>
+
+  <!-- Google Font (lebih premium) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/topup.css">
+</head>
+
+<body>
+
+<nav>
+  <div class="brand">
+    <img src="assets/image/logo.jpg" class="nav-logo" draggable="false">
+    Xkay Store
+  </div>
+
+  <div class="nav-right">
+  <button class="btn-icon" id="themeBtn" onclick="toggleMode()">🌙</button>
+    <button class="btn-icon hamburger" onclick="toggleMenu(this)">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div id="menu" class="dropdown">
+    <a href="index.html">Home</a>
+    <a href="topup.html">Top Up PayPal</a>
+    <a href="convert.html">Convert PayPal</a>
+    <a href="history.html">Riwayat Transaksi</a>
+    <a href="testimoni.html">Rating & Testimoni Pelanggan</a>
+  </div>
+</nav>
+
+<!-- HERO COPYWRITING -->
+<section class="hero convert-hero">
+  <h1>Top Up Saldo PayPal Lebih Mudah & Aman</h1>
+
+  <p>
+    Ingin punya saldo PayPal tapi bingung Top Up nya dimana?
+    Xkay Store bantu Top Up dengan proses cepat,
+    rate bersaing, dan transaksi 100% aman.
+  </p>
+
+  <p>
+    Tanpa ribet. Tanpa nunggu lama. Langsung masuk ke rekening PayPal kamu ⚡
+  </p>
+
+  <button class="btn convert" id="openConvert">
+    Order Top Up Sekarang
+  </button>
+</section>
+
+<!-- RATE TABLE -->
+<section id="rate" class="card">
+  <h2>Rate Top Up Hari Ini</h2>
+  
+  <div class="rate-table">
+  
+    <div class="rate-row head">
+      <span>Jumlah</span>
+      <span>Rate Lama</span>
+      <span>Rate Hari Ini</span>
+    </div>
+  
+    <div class="rate-row">
+      <span>$1 – $50</span>
+      <span class="old">Rp 18.000</span>
+      <span class="new">Rp 17.000</span>
+    </div>
+  
+    <div class="rate-row">
+      <span>$51 – $500</span>
+      <span class="old">Rp 17.500</span>
+      <span class="new">Rp 16.500</span>
+    </div>
+  
+    <div class="rate-row">
+      <span>$501+</span>
+      <span class="old">Rp 17.000</span>
+      <span class="new">Rp 16.300</span>
+    </div>
+  
+  </div>
+</section>
+
+<!-- KEUNGGULAN -->
+<section id="fitur" class="features">
+  <div class="feature-box">
+    <span class="icon">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/>
+      </svg>
+    </span>
+    <span>Proses 3-5 Menit</span>
+  </div>
+
+  <div class="feature-box">
+    <span class="icon">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 1a5 5 0 00-5 5v3H6a2 2 0 00-2 2v9h16v-9a2 2 0 00-2-2h-1V6a5 5 0 00-5-5zm-3 8V6a3 3 0 116 0v3H9z"/>
+      </svg>
+    </span>
+    <span>Aman & Terpercaya</span>
+  </div>
+
+  <div class="feature-box">
+    <span class="icon">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M4 4h16v12H7l-3 3V4z"/>
+      </svg>
+    </span>
+    <span>Fast Response</span>
+  </div>
+
+  <div class="feature-box">
+    <span class="icon">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M3 10l9-7 9 7v10H3zM9 20v-6h6v6"/>
+      </svg>
+    </span>
+    <span>Semua Bank & E-Wallet</span>
+  </div>
+</section>
+
+<footer>
+  © 2026 Xkay Store • All Rights Reserved
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/6285846005280?text=Halo%20Admin%2C%20saya%20ingin%20tanya%20tentang%20layanan%20PayPal" class="wa-float" target="_blank" rel="noopener" aria-label="Chat WhatsApp">
+
+  <span class="wa-tooltip">Online sekarang</span>
+
+  <span class="wa-text">Tanya Admin</span>
+
+  <!-- ICON WRAPPER -->
+  <span class="wa-icon-wrap">
+
+    <svg class="wa-icon" viewBox="0 0 32 32" fill="white">
+      <path d="M19.11 17.27c-.29-.15-1.72-.85-1.99-.94-.27-.1-.46-.15-.66.15-.2.29-.76.94-.93 1.13-.17.2-.34.22-.63.07-.29-.15-1.23-.45-2.35-1.45-.87-.77-1.46-1.72-1.63-2.01-.17-.29-.02-.45.13-.6.14-.14.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.51-.07-.15-.66-1.59-.9-2.17-.24-.57-.49-.5-.66-.5h-.56c-.2 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.43s1.05 2.82 1.19 3.02c.15.2 2.06 3.14 5 4.4.7.3 1.25.48 1.67.61.7.22 1.33.19 1.83.11.56-.08 1.72-.7 1.97-1.37.24-.66.24-1.23.17-1.37-.07-.15-.27-.22-.56-.37zM16 3C8.83 3 3 8.83 3 16c0 2.82.93 5.43 2.5 7.55L4 29l5.63-1.48A12.9 12.9 0 0016 29c7.17 0 13-5.83 13-13S23.17 3 16 3z"/>
+    </svg>
+
+  </span>
+
+</a>
+<!-- CHAT BUBBLE -->
+<div class="wa-chat-bubble" id="waBubble">
+  Halo 👋 bisa bantu?
+</div>
+
+<!-- ================= MODAL CONVERT ================= -->
+<div class="modal" id="convertModal">
+  <div class="modal-box">
+
+    <h3>Form Order Top Up</h3>
+
+    <form id="convertForm" class="form">
+
+      <input type="text" id="nama" placeholder="Nama Akun PayPal" required class="input">
+
+      <input type="email" id="email" placeholder="Email PayPal" required class="input">
+
+      <!-- pilih metode -->
+      <button type="button" id="chooseMethod" class="input select-btn">
+        Pilih Metode Pembayaran
+      </button>
+
+      <input type="hidden" id="metode">
+      
+      <button type="button" id="chooseTujuan" class="input select-btn" disabled>
+        Pilih Metode Pembayaran Dulu
+      </button>
+      
+      <input type="hidden" id="tujuan" required>
+      
+      <input 
+        type="text" 
+        id="nomor" 
+        placeholder="Nomor Rekening / E-Wallet" 
+        class="input" 
+        disabled
+        required
+      >
+
+      <input type="text" id="usd" inputmode="decimal" placeholder="Nominal USD ($)" required class="input">
+
+      <input type="text" id="idr" placeholder="Nominal Rupiah (Auto)" readonly class="input readonly">
+
+      <button type="submit" class="btn convert">Kirim ke WhatsApp</button>
+      <button type="button" class="btn-cancel" id="closeConvert">Batal</button>
+
+    </form>
+
+  </div>
+</div>
+
+<!-- ===== MODAL PILIH METODE ===== -->
+<div class="modal" id="methodModal">
+  <div class="modal-box">
+
+    <h3>Pilih Metode</h3>
+
+    <button class="method-btn" data-value="Bank Lokal">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 10l9-7 9 7v10H3zM9 20v-6h6v6"/>
+        </svg>
+      </span>
+      <span>Bank Lokal</span>
+    </button>
+    
+    <button class="method-btn" data-value="E-Wallet">
+      <span class="icon">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M7 2h10a2 2 0 012 2v16H5V4a2 2 0 012-2zm5 16a2 2 0 100-4 2 2 0 000 4z"/>
+      </svg>
+      </span>
+      <span>E-Wallet</span>
+    </button>
+
+  </div>
+</div>
+
+<!-- ===== MODAL PILIH TUJUAN ===== -->
+<div class="modal" id="tujuanModal">
+  <div class="modal-box">
+
+    <h3>Pilih Pembayaran Dari</h3>
+
+    <div id="tujuanList" class="tujuan-list"></div>
+
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/topup.js"></script>
+</body>
+</html>

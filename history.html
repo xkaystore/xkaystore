@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Riwayat Transaksi | Xkay Store</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- style utama -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- style khusus history -->
+  <link rel="stylesheet" href="css/history.css">
+</head>
+
+<body>
+
+<!-- NAV (sama biar konsisten) -->
+<nav>
+  <div class="brand">
+    <img src="assets/image/logo.jpg" class="nav-logo">
+    Xkay Store
+  </div>
+
+  <div class="nav-right">
+    <button class="btn-icon" id="themeBtn" onclick="toggleMode()">🌙</button>
+    <button class="btn-icon hamburger" onclick="toggleMenu(this)">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div id="menu" class="dropdown">
+    <a href="index.html">Home</a>
+    <a href="topup.html">Top Up PayPal</a>
+    <a href="convert.html">Convert PayPal</a>
+    <a href="history.html">Riwayat Transaksi</a>
+    <a href="testimoni.html">Rating & Testimoni Pelanggan</a>
+  </div>
+</nav>
+
+<!-- HERO diganti khusus history -->
+<section class="hero history-hero">
+  <h1>Riwayat Transaksi Kamu</h1>
+  <p>Lihat semua order convert & top up di sini</p>
+</section>
+
+<!-- FILTER -->
+<section class="card filter-box">
+  <input type="text" id="searchInput" placeholder="Cari nama...">
+  <select id="typeFilter">
+    <option value="">Semua</option>
+    <option value="convert">Convert</option>
+    <option value="topup">Top Up</option>
+  </select>
+</section>
+
+<!-- TABLE -->
+<section class="card table-wrapper">
+  <div id="loading">Loading data...</div>
+  <div id="totalInfo" style="margin-bottom:10px; opacity:.6; font-size:12px;"></div>
+    <table id="historyTable">
+      <thead>
+        <tr>
+          <th>Tanggal</th>
+          <th>Nama</th>
+          <th>USD</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+  <div id="pagination" class="pagination"></div>
+  
+  <div id="emptyState" class="empty">Belum ada transaksi 😴</div>
+</section>
+
+<footer>
+  © 2026 Xkay Store • All Rights Reserved
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- script utama -->
+<script src="js/script.js"></script>
+
+<!-- script history -->
+<script src="js/history.js"></script>
+
+</body>
+</html>

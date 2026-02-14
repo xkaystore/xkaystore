@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Testimoni Pelanggan | Xkay Store</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- style global -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- khusus testimoni -->
+  <link rel="stylesheet" href="css/testimoni.css">
+</head>
+
+<body>
+
+<!-- NAV (copy sama biar konsisten) -->
+<nav>
+  <div class="brand">
+    <img src="assets/image/logo.jpg" class="nav-logo">
+    Xkay Store
+  </div>
+
+  <div class="nav-right">
+    <button class="btn-icon" id="themeBtn" onclick="toggleMode()">🌙</button>
+    <button class="btn-icon hamburger" onclick="toggleMenu(this)">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div id="menu" class="dropdown">
+    <a href="index.html">Home</a>
+    <a href="topup.html">Top Up PayPal</a>
+    <a href="convert.html">Convert PayPal</a>
+    <a href="history.html">Riwayat Transaksi</a>
+    <a href="testimoni.html">Rating & Testimoni Pelanggan</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero review-hero">
+  <h1>Rating & Testimoni Pelanggan</h1>
+  <p>Lihat pengalaman customer Xkay Store ⭐</p>
+</section>
+
+<!-- SUMMARY RATING -->
+<section class="card rating-summary">
+
+  <div class="score-box">
+    <div id="avgScore" class="avg-score">0.0</div>
+    <div id="avgStars" class="stars big">★★★★★</div>
+    <div id="totalReview" class="count">0 ulasan</div>
+  </div>
+
+  <div id="bars" class="bars"></div>
+
+</section>
+
+<!-- FORM REVIEW -->
+<section class="card review-form">
+  <h3>Tulis Testimoni</h3>
+
+  <input id="nameInput" placeholder="Nama kamu">
+
+  <div id="starPicker" class="stars picker">★★★★★</div>
+
+  <textarea id="textInput" placeholder="Bagaimana pengalaman kamu?"></textarea>
+
+  <button id="sendBtn" class="btn topup">Kirim Testimoni</button>
+</section>
+
+<!-- SORT -->
+<section class="sort-box">
+  <select id="sortSelect">
+    <option value="new">Terbaru</option>
+    <option value="high">Rating tertinggi</option>
+    <option value="low">Rating terendah</option>
+  </select>
+</section>
+
+<!-- LIST -->
+<section id="reviewList" class="review-list"></section>
+
+<button id="loadMore" class="btn topup" style="margin:20px auto;display:block">
+  Muat lebih banyak
+</button>
+
+<footer>
+  © 2026 Xkay Store • All Rights Reserved
+</footer>
+
+<script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/testimoni.js"></script>
+
+</body>
+</html>
