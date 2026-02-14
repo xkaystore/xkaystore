@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Xkay Store | Convert & Top Up PayPal</title>
+
+  <!-- Google Font (lebih premium) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<nav>
+  <div class="brand">
+    <img src="assets/image/logo.jpg" class="nav-logo" draggable="false">
+    Xkay Store
+  </div>
+
+  <div class="nav-right">
+  <button class="btn-icon" id="themeBtn" onclick="toggleMode()">🌙</button>
+    <button class="btn-icon hamburger" onclick="toggleMenu(this)">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div id="menu" class="dropdown">
+    <a href="index.html">Home</a>
+    <a href="topup.html">Top Up PayPal</a>
+    <a href="convert.html">Convert PayPal</a>
+    <a href="history.html">Riwayat Transaksi</a>
+    <a href="testimoni.html">Rating & Testimoni Pelanggan</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>
+    Jasa Convert & Top Up Saldo PayPal Terpercaya
+  </h1>
+
+  <p>
+    Layanan PayPal cepat, aman, dan terpercaya untuk kebutuhan transaksi online Anda.
+  </p>
+
+  <a href="convert.html" class="btn convert">Order Convert</a>
+  <a href="topup.html" class="btn topup">Order Top Up</a>
+</section>
+
+<section id="rate" class="card">
+  <h2>Rate Hari Ini</h2>
+  <p>Convert : Rp 15.200 / $1</p>
+  <p>Top Up : Rp 15.500 / $1</p>
+</section>
+
+<section id="fitur" class="features">
+  <div class="feature-box">⚡ Proses Cepat</div>
+  <div class="feature-box">🔒 Aman 100%</div>
+  <div class="feature-box">📱 Fast Response</div>
+  <div class="feature-box">💬 WhatsApp 24 Jam</div>
+</section>
+
+<footer>
+  © 2026 Xkay Store • All Rights Reserved
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/6285846005280?text=Halo%20Admin%2C%20saya%20ingin%20tanya%20tentang%20layanan%20PayPal" class="wa-float" target="_blank" rel="noopener" aria-label="Chat WhatsApp">
+
+  <span class="wa-tooltip">Online sekarang</span>
+
+  <span class="wa-text">Tanya Admin</span>
+
+  <!-- ICON WRAPPER -->
+  <span class="wa-icon-wrap">
+
+    <svg class="wa-icon" viewBox="0 0 32 32" fill="white">
+      <path d="M19.11 17.27c-.29-.15-1.72-.85-1.99-.94-.27-.1-.46-.15-.66.15-.2.29-.76.94-.93 1.13-.17.2-.34.22-.63.07-.29-.15-1.23-.45-2.35-1.45-.87-.77-1.46-1.72-1.63-2.01-.17-.29-.02-.45.13-.6.14-.14.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.51-.07-.15-.66-1.59-.9-2.17-.24-.57-.49-.5-.66-.5h-.56c-.2 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.43s1.05 2.82 1.19 3.02c.15.2 2.06 3.14 5 4.4.7.3 1.25.48 1.67.61.7.22 1.33.19 1.83.11.56-.08 1.72-.7 1.97-1.37.24-.66.24-1.23.17-1.37-.07-.15-.27-.22-.56-.37zM16 3C8.83 3 3 8.83 3 16c0 2.82.93 5.43 2.5 7.55L4 29l5.63-1.48A12.9 12.9 0 0016 29c7.17 0 13-5.83 13-13S23.17 3 16 3z"/>
+    </svg>
+
+  </span>
+
+</a>
+<!-- CHAT BUBBLE -->
+<div class="wa-chat-bubble" id="waBubble">
+  Halo 👋 bisa bantu?
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
