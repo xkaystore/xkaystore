@@ -132,54 +132,48 @@ document.addEventListener("DOMContentLoaded", () => {
   ============================== */
   let isSubmitting = false;
 
-  form?.addEventListener("submit", async (e)=>{
-    e.preventDefault();
-    if(isSubmitting) return;
+form?.addEventListener("submit", async (e)=>{
+  e.preventDefault();
+  if(isSubmitting) return;
 
-    try {
-      isSubmitting = true;
+  try {
+    isSubmitting = true;
 
-      const usd = parseUSD(usdInput.value);
-      const idr = usd * getRate(usd);
+    const usd = parseUSD(usdInput.value);
+    const idr = usd * getRate(usd);
 
-      if(!form.nama.value || !form.email.value || !metodeInput.value || !tujuanInput.value || !nomorInput.value || !usd){
-        alert("Lengkapi semua data dulu ya 🙏");
-        return;
-      }
+    if(!form.nama.value || !form.email.value || !metodeInput.value || !tujuanInput.value || !nomorInput.value || !usd){
+      alert("Lengkapi semua data dulu ya 🙏");
+      return;
+    }
 
-      // Waktu WIB langsung dibuat di JS
-      const nowWIB = new Date(Date.now() + 7*60*60*1000);
+    // Waktu WIB langsung dibuat di JS (tetap seperti sistem kamu)
+    const nowWIB = new Date(Date.now() + 7*60*60*1000);
 
-      const { data: inserted, error } = await supabase
-        .from("orders")
-        .insert([{
-          type: "convert",
-          nama: form.nama.value.trim(),
-          email: form.email.value.trim(),
-          metode: metodeInput.value,
-          tujuan: tujuanInput.value,
-          nomor: nomorInput.value.trim(),
-          usd,
-          idr,
-          waktu: nowWIB.toISOString()
-        }])
-        .select()
-        .single();
+    const { data: inserted, error } = await supabase
+      .from("orders")
+      .insert([{
+        type: "convert",
+        nama: form.nama.value.trim(),
+        email: form.email.value.trim(),
+        metode: metodeInput.value,
+        tujuan: tujuanInput.value,
+        nomor: nomorInput.value.trim(),
+        usd,
+        idr,
+        waktu: nowWIB.toISOString()
+      }])
+      .select()
+      .single();
 
-      if(error) throw error;
+    if(error) throw error;
 
-      const waktuWIB = new Date(inserted.waktu).toLocaleString("id-ID", {
-        timeZone: "Asia/Jakarta",
-        hour12: false,
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit"
-      });
+    // ===== FIX WAKTU WHATSAPP (ANTI DOUBLE OFFSET) =====
+    const raw = inserted.waktu.replace("Z", "");
+    const waktuWIB = raw.substring(0,16).replace("T"," ");
 
-      /* WHATSAPP */
-      const msg =
+    /* WHATSAPP */
+    const msg =
 `Halo Admin, saya ingin convert PayPal
 
 Waktu: ${waktuWIB}
@@ -190,23 +184,23 @@ Nomor Tujuan: ${inserted.nomor}
 Nominal: $${usd}
 Total diterima: Rp ${formatIDR(idr)}`;
 
-      window.open(
-        "https://wa.me/6285846005280?text=" + encodeURIComponent(msg),
-        "_blank"
-      );
+    window.open(
+      "https://wa.me/6285846005280?text=" + encodeURIComponent(msg),
+      "_blank"
+    );
 
-      form.reset();
-      idrInput.value = "";
-      chooseTujuanBtn.disabled = true;
-      chooseTujuanBtn.textContent = "Pilih Tujuan Pencairan";
-      modal.classList.remove("show");
+    form.reset();
+    idrInput.value = "";
+    chooseTujuanBtn.disabled = true;
+    chooseTujuanBtn.textContent = "Pilih Tujuan Pencairan";
+    modal.classList.remove("show");
 
-    } catch(err){
-      console.error(err);
-      alert("Gagal simpan order 😢");
-    } finally {
-      isSubmitting = false;
-    }
-  });
+  } catch(err){
+    console.error(err);
+    alert("Gagal simpan order 😢");
+  } finally {
+    isSubmitting = false;
+  }
+});
 
 });
