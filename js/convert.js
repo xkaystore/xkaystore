@@ -168,7 +168,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if(error) throw error;
 
-      const waktuWIB = formatWIB(inserted.waktu);
+      const waktuWIB = new Date(inserted.waktu).toLocaleString("id-ID", {
+        timeZone: "Asia/Jakarta",
+        hour12: false,
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
+      });
 
       /* WHATSAPP */
       const msg =

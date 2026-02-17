@@ -50,6 +50,11 @@ const db = window.supabase.createClient(
 
 const list = document.getElementById("adminTestimoniList");
 const refreshBtn = document.getElementById("refreshTesti");
+const testiPagination = document.getElementById("testiPagination");
+
+let testiData = [];
+let testiPage = 1;
+const testiPerPage = 5;
 
 /* =========================
    LOAD REVIEWS
@@ -59,7 +64,7 @@ async function loadTestimoni(){
   list.innerHTML = "Loading...";
 
   const { data, error } = await db
-    .from("reviews") // ✅ samakan
+    .from("reviews")
     .select("*")
     .order("created_at", { ascending:false });
 
@@ -68,24 +73,38 @@ async function loadTestimoni(){
     return;
   }
 
+  testiData = data || [];
+
+  /* reset ke halaman 1 setiap reload */
+  testiPage = 1;
+
+  renderTestimoni();
+}
+
+function renderTestimoni(){
+
   list.innerHTML = "";
 
-  data.forEach(item => {
+  const start = (testiPage - 1) * testiPerPage;
+  const end   = start + testiPerPage;
+
+  const paginated = testiData.slice(start,end);
+
+  paginated.forEach(item=>{
 
     const div = document.createElement("div");
     div.className = "admin-item" + (!item.reply ? " pending" : "");
 
     div.innerHTML = `
       <div class="admin-name">${item.name}</div>
-    
       <div class="admin-text">${item.text}</div>
-    
+
       ${item.reply ? `
         <div class="admin-replied">
           💬 Admin: ${item.reply}
         </div>
       ` : ""}
-    
+
       <div class="admin-reply">
         <input placeholder="Balas sebagai admin..." id="reply-${item.id}">
         <button class="btn-admin" onclick="replyTesti(${item.id})">Kirim</button>
@@ -95,6 +114,31 @@ async function loadTestimoni(){
 
     list.appendChild(div);
   });
+
+  renderTestiPagination();
+}
+
+function renderTestiPagination(){
+
+  if(!testiPagination) return;
+
+  testiPagination.innerHTML = "";
+
+  const totalPages = Math.ceil(testiData.length / testiPerPage);
+
+  for(let i=1;i<=totalPages;i++){
+
+    const btn = document.createElement("button");
+    btn.textContent = i;
+    btn.className = "page-btn" + (i === testiPage ? " active" : "");
+
+    btn.onclick = ()=>{
+      testiPage = i;
+      renderTestimoni();
+    };
+
+    testiPagination.appendChild(btn);
+  }
 }
 
 /* =========================
@@ -168,6 +212,10 @@ const modalUsd    = document.getElementById("modalUsd");
 const modalType   = document.getElementById("modalType");
 const saveBtn     = document.getElementById("saveOrderBtn");
 const cancelBtn   = document.getElementById("cancelOrderBtn");
+const ordersPagination = document.getElementById("ordersPagination");
+
+let ordersPage = 1;
+const ordersPerPage = 5;
 
 let editingId = null;
 
@@ -184,8 +232,6 @@ async function loadOrders(){
 
   if(!ordersBody) return;
 
-  ordersBody.innerHTML = "<tr><td colspan='5'>Loading...</td></tr>";
-
   const { data, error } = await db
     .from("orders")
     .select("*")
@@ -197,9 +243,20 @@ async function loadOrders(){
   }
 
   ordersData = data || [];
+  ordersPage = 1;   // tambahkan ini
+  renderOrders();
+}
+
+function renderOrders(){
+
   ordersBody.innerHTML = "";
 
-  ordersData.forEach(item=>{
+  const start = (ordersPage - 1) * ordersPerPage;
+  const end   = start + ordersPerPage;
+
+  const paginatedData = ordersData.slice(start, end);
+
+  paginatedData.forEach(item=>{
 
     const tr = document.createElement("tr");
 
@@ -216,6 +273,31 @@ async function loadOrders(){
 
     ordersBody.appendChild(tr);
   });
+
+  renderOrdersPagination();
+}
+
+function renderOrdersPagination(){
+
+  if(!ordersPagination) return;
+
+  ordersPagination.innerHTML = "";
+
+  const totalPages = Math.ceil(ordersData.length / ordersPerPage);
+
+  for(let i=1;i<=totalPages;i++){
+
+    const btn = document.createElement("button");
+    btn.textContent = i;
+    btn.className = "page-btn" + (i === ordersPage ? " active" : "");
+
+    btn.onclick = ()=>{
+      ordersPage = i;
+      renderOrders();
+    };
+
+    ordersPagination.appendChild(btn);
+  }
 }
 
 /* ================= EDIT ================= */
