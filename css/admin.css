@@ -327,3 +327,30 @@
 .modal.show{
   display:flex;
 }
+
+/* ================= PAGINATION ================= */
+.pagination{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-top:14px;
+  flex-wrap:wrap;
+}
+
+.page-btn{
+  padding:6px 10px;
+  border-radius:8px;
+  border:none;
+  cursor:pointer;
+  font-size:12px;
+  background:rgba(255,255,255,.08);
+  color:white;
+}
+
+.page-btn.active{
+  background:var(--primary);
+}
+
+.page-btn:hover{
+  opacity:.8;
+}
