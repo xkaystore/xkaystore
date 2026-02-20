@@ -76,6 +76,31 @@ tbody tr:hover{
   color:#3b82f6;
 }
 
+/* ===== STATUS BADGE ===== */
+.badge.status{
+  text-transform: capitalize;
+}
+
+.badge.pending{
+  background:#f59e0b33;
+  color:#f59e0b;
+}
+
+.badge.process{
+  background:#3b82f633;
+  color:#3b82f6;
+}
+
+.badge.success{
+  background:#22c55e33;
+  color:#22c55e;
+}
+
+.badge.cancel{
+  background:#ef444433;
+  color:#ef4444;
+}
+
 /* state */
 #loading,
 .empty{
