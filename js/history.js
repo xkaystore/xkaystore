@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const { data, error } = await supabase
         .from("orders")
-        .select("waktu,nama,type,usd")
+        .select("waktu,nama,type,usd,status")
         .order("waktu", { ascending:false });
 
       if(error) throw error;
@@ -82,16 +82,19 @@ function formatSimple(dateStr){
     const rows = filteredData.slice(start, start + PAGE_SIZE);
 
     rows.forEach(item => {
-
+    
       const tr = document.createElement("tr");
-
+    
+      const statusText = (item.status || "pending").toLowerCase();
+    
       tr.innerHTML = `
         <td>${formatSimple(item.waktu)}</td>
         <td>${item.nama || "-"}</td>
         <td>$${Number(item.usd || 0).toLocaleString("en-US")}</td>
         <td><span class="badge ${item.type}">${item.type}</span></td>
+        <td><span class="badge status ${statusText}">${statusText}</span></td>
       `;
-
+    
       tbody.appendChild(tr);
     });
 

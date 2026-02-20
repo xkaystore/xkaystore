@@ -204,6 +204,12 @@ logoutBtn?.addEventListener("click", ()=>{
 /* =========================
    ORDERS MANAGEMENT
 ========================= */
+const modalEmail  = document.getElementById("modalEmail");
+const modalMetode = document.getElementById("modalMetode");
+const modalTujuan = document.getElementById("modalTujuan");
+const modalNomor  = document.getElementById("modalNomor");
+const modalIdr    = document.getElementById("modalIdr");
+const modalStatus = document.getElementById("modalStatus");
 const ordersBody = document.getElementById("ordersBody");
 const refreshOrders = document.getElementById("refreshOrders");
 const modal       = document.getElementById("orderModal");
@@ -260,11 +266,18 @@ function renderOrders(){
 
     const tr = document.createElement("tr");
 
+    const statusText = (item.status || "pending").toLowerCase();
+    
     tr.innerHTML = `
       <td>${formatSimple(item.waktu)}</td>
-      <td>${item.nama}</td>
-      <td>$${Number(item.usd).toLocaleString("en-US")}</td>
-      <td>${item.type}</td>
+      <td>${item.nama || "-"}</td>
+      <td>$${Number(item.usd || 0).toLocaleString("en-US")}</td>
+      <td>${item.type || "-"}</td>
+      <td>
+        <span class="status-badge status-${statusText}">
+          ${statusText}
+        </span>
+      </td>
       <td>
         <button class="action-btn btn-edit" onclick="editOrder(${item.id})">✏️</button>
         <button class="action-btn btn-del" onclick="deleteOrder(${item.id})">🗑</button>
@@ -308,9 +321,15 @@ window.editOrder = function(id){
 
   editingId = id;
 
-  modalNama.value = item.nama || "";
-  modalUsd.value  = item.usd || "";
-  modalType.value = item.type || "convert";
+  modalNama.value   = item.nama || "";
+  modalEmail.value  = item.email || "";
+  modalMetode.value = item.metode || "";
+  modalTujuan.value = item.tujuan || "";
+  modalNomor.value  = item.nomor || "";
+  modalUsd.value    = item.usd || "";
+  modalIdr.value    = item.idr || "";
+  modalType.value   = item.type || "convert";
+  modalStatus.value = item.status || "pending";
 
   modal.classList.add("show");
 };
@@ -323,8 +342,14 @@ saveBtn?.addEventListener("click", async ()=>{
     .from("orders")
     .update({
       nama: modalNama.value,
+      email: modalEmail.value,
+      metode: modalMetode.value,
+      tujuan: modalTujuan.value,
+      nomor: modalNomor.value,
       usd: Number(modalUsd.value),
-      type: modalType.value
+      idr: Number(modalIdr.value),
+      type: modalType.value,
+      status: modalStatus.value
     })
     .eq("id", editingId);
 
