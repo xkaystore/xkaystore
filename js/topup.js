@@ -75,9 +75,9 @@ document.addEventListener("DOMContentLoaded", () => {
      501+  = 16.3k
   ============================= */
   function getRate(usd){
-    if (usd <= 50) return 17000;
-    if (usd <= 500) return 16500;
-    return 16300;
+    if (usd <= 50) return 18000;
+    if (usd <= 500) return 17500;
+    return 17000;
   }
 
   usdInput?.addEventListener("input", () => {
